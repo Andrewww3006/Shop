@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Shop {
+
     private final Map <Integer, Item> itemHashMap = new HashMap<>();
 
     Shop (){}
@@ -14,11 +15,22 @@ public class Shop {
         Integer key = item.getId();
 
            itemHashMap.putIfAbsent(key, item);
-               for (Map.Entry<Integer, Item> items : itemHashMap.entrySet())
-                   System.out.println(items.getKey() + items.getValue().getName() + items.getValue().getPrice());
 
 
     }
+
+    public Map<Integer, Item> getItemsList (){
+        return  itemHashMap;
+    }
+
+    public  void removeItemById (int id){
+        if (itemHashMap.remove(id)!=null)
+            itemHashMap.remove(id);
+        else System.out.println("Illegal id");
+
+    }
+
+
     
 
     
