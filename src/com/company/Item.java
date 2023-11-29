@@ -7,30 +7,32 @@ public class Item extends Shop{
     private String name;
     private int price;
 
+    Item(){}
+
     Item (int id, String name, int price){
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public void setId (){
+    public Integer setId (){
         System.out.println("Введите id:");
         Scanner sc = new Scanner(System.in);
-        id = sc.nextInt();
+        return sc.nextInt();
 
     }
 
-    public void setName (){
+    public String setName (){
         System.out.println("Введите name:");
         Scanner sc = new Scanner(System.in);
-        name = sc.next();
+        return sc.next();
 
     }
 
-    public void setPrice (){
+    public int setPrice (){
         System.out.println("Введите price:");
         Scanner sc = new Scanner(System.in);
-        price = sc.nextInt();
+        return sc.nextInt();
 
     }
 
@@ -46,10 +48,8 @@ public class Item extends Shop{
         return price;
     }
 
-    public void editItem(){
-        setId();
-        setName();
-        setPrice();
-    }
+
+
+
 
 }

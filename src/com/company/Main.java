@@ -25,7 +25,7 @@ public class Main {
         for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
             System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
         }
-        sox.editItem();
+        dressShop.editItem(sox);
         for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
             System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
         }

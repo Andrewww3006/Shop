@@ -29,6 +29,12 @@ public class Shop {
         else System.out.println("Illegal id");
 
     }
+    public void editItem(Item item){
+        itemHashMap.remove(item.getId());
+        Item item2 = new Item(item.setId(), item.setName(), item.setPrice());
+        itemHashMap.putIfAbsent(item2.getId(),item2);
+    }
+
 
 
     
