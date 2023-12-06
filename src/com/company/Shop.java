@@ -1,9 +1,10 @@
 package com.company;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Shop {
+public class Shop{
 
     private final Map <Integer, Item> itemHashMap = new HashMap<>();
 
@@ -36,9 +37,17 @@ public class Shop {
     }
 
 
+    static class ItemPriceComparator implements Comparator<Item>{
+        @Override
+        public int compare(Item o1, Item o2) {
+            if(o1.getPrice() > o2.getPrice())
+            return 1;
+            else if (o1.getPrice() < o2.getPrice())
+           return -1;
+            else
+            return 0;
+        }
+    }
 
-    
-
-    
 
 }
