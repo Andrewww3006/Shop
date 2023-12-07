@@ -11,7 +11,7 @@ public class Shop{
     Shop (){}
 
 
-    public void adItem (Item item){
+    public void addItem (Item item){
 
         Integer key = item.getId();
 

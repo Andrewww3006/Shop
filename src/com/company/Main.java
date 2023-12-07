@@ -8,34 +8,57 @@ public class Main {
 	// write your code here
         Item sox = new Item(1, "Sox", 3 );
         Shop dressShop = new Shop();
-        dressShop.adItem(sox);
+        dressShop.addItem(sox);
         Item shoes = new Item(2,"Shoes", 100);
-        dressShop.adItem(shoes);
+        dressShop.addItem(shoes);
         Item dress = new Item(3, "Dress", 75);
-        dressShop.adItem(dress);
-
-
+        dressShop.addItem(dress);
+        Item jacket = new Item(4, "Jacket", 175);
+        dressShop.addItem(jacket);
+        Item bag = new Item(5, "Bag", 89);
+        dressShop.addItem(bag);
+        Item pants = new Item(6, "Pants", 120);
+        dressShop.addItem(pants);
+        System.out.println("Список товаров:");
         for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
             System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
         }
+        System.out.println();
 
-        //dressShop.removeItemById(2);
-
-        //for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
-          //  System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
-     //   }
-        //dressShop.editItem(sox);
-        //for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
-       //     System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
-       // }
-
-
+        System.out.println("Список товаров отсортированный по цене:");
         List <Item> listByPrice= new ArrayList<>(dressShop.getItemsList().values());
         Comparator <Item> itemComparator = new Shop.ItemPriceComparator();
         listByPrice.sort(itemComparator);
 
         for (Item item: listByPrice)
             System.out.println("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + '.');
+        System.out.println();
+
+        System.out.println("Удаляем товар по id:");
+        dressShop.removeItemById(2);
+        for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
+           System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
+        }
+
+        System.out.println();
+        System.out.println("Список товара отсортированный по добавлению");
+
+        Deque <Item> itemQueue = new ArrayDeque<>();
+
+        for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
+            itemQueue.addFirst(item.getValue());
+        }
+        while (!itemQueue.isEmpty())
+            System.out.println("id: " + itemQueue.getFirst().getId()+ "; Item: " + itemQueue.getFirst().getName() + "; Price:"
+                    + itemQueue.removeFirst().getPrice() + '.');
+        System.out.println("Редактируем товар по:");
+        dressShop.editItem(sox);
+        for (Map.Entry<Integer, Item> item : dressShop.getItemsList().entrySet()) {
+            System.out.println("id: " + item.getKey() + "; Item: " + item.getValue().getName() + "; Price:" + item.getValue().getPrice() + '.');
+       }
+
+
+
 
 
 
