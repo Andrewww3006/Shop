@@ -1,13 +1,14 @@
 package com.company;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
-public class Item extends Shop{
+public class Item {
     private int id;
     private String name;
     private int price;
 
-    Item(){}
+    public Item(){};
 
     Item (int id, String name, int price){
         this.id = id;
@@ -15,25 +16,16 @@ public class Item extends Shop{
         this.price = price;
     }
 
-    public Integer setId (){
-        System.out.println("Введите id:");
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
-
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String setName (){
-        System.out.println("Введите name:");
-        Scanner sc = new Scanner(System.in);
-        return sc.next();
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int setPrice (){
-        System.out.println("Введите price:");
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
-
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getId(){
@@ -47,8 +39,6 @@ public class Item extends Shop{
     public int getPrice(){
         return price;
     }
-
-
 
 
 
