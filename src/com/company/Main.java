@@ -8,34 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        ItemService itemService = new ItemService();
-        int ch;
-        Scanner scanner = new Scanner(System.in);
-        do {
-            System.out.println("выберите действие");
-            System.out.println("1. Вывод товара; 2. Добавление товара; 3. Удаление товара по id;");
-            ch = scanner.nextInt();
-            switch (ch) {
-                    case 1:
-                        itemService.sortingMap();
-                    break;
-
-                case 2:
-                        itemService.addItem();
-                    break;
-
-                case 3:
-                        itemService.removeItemById();
-                    break;
-                case 4:
-                    itemService.editItem();
-                    break;
-                }
-
-
-
-
-            } while (ch != 0);
+        Starter starter = new Starter();
+        starter.start();
 
     }
 }

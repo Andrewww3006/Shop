@@ -111,4 +111,7 @@ public class ItemService {
         }
     }
 
+    Scanner scanner (Scanner scanner){
+        return scanner;
+    }
 }
