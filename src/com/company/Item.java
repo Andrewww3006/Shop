@@ -3,12 +3,13 @@ package com.company;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class Item {
     private int id;
     private String name;
     private int price;
-    private LocalDate date;
+    public LocalDate date;
 
     public Item(){};
 
@@ -30,7 +31,9 @@ public class Item {
         this.price = price;
     }
 
-    public void setDate(){this.date = LocalDate.now();}
+    public void setDate(){
+        this.date = LocalDate.now();
+    }
 
     public int getId(){
         return id;
@@ -44,7 +47,16 @@ public class Item {
         return price;
     }
 
-    public LocalDate getDate(){return date;}
+    public LocalDate getDate(){
+        return date;
+    }
+
+    public void isExpensive(int price){
+        Predicate<Integer> isExpensive = x -> x > 12;
+        if (isExpensive.test(price))
+            System.out.println("Это дорогая вещь");
+        else System.out.println("Это дешевая вещь");
+    }
 
 
 

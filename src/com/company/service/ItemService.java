@@ -4,6 +4,7 @@ import com.company.Item;
 import com.company.Shop;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class ItemService {
 
@@ -18,9 +19,12 @@ public class ItemService {
                 List<Item> listByPrice = new ArrayList<>(shop.getItemsMap().values());
                 if (ch1 == 1) {
                     listByPrice.sort(Comparator.comparing(Item::getPrice));
-                    for (Item item : listByPrice)
-                        System.out.println("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + "; Date:" + item.getDate());
-                    System.out.println();
+                    for (Item item : listByPrice) {
+                        System.out.print("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + "; Date:" + item.getDate() +
+                                "; -");
+                        item.isExpensive(item.getPrice());
+                    }
+
                 }
                 if (ch1 == 2) {
                     listByPrice.sort(Comparator.comparing(Item::getPrice).reversed());
@@ -111,6 +115,7 @@ public class ItemService {
             System.out.println("Illegal id");
         }
     }
+
 
     Scanner scanner (Scanner scanner){
         return scanner;
