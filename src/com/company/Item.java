@@ -1,5 +1,6 @@
 package com.company;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ public class Item {
     private int id;
     private String name;
     private int price;
+    private LocalDate date;
 
     public Item(){};
 
@@ -28,6 +30,8 @@ public class Item {
         this.price = price;
     }
 
+    public void setDate(){this.date = LocalDate.now();}
+
     public int getId(){
         return id;
     }
@@ -39,6 +43,8 @@ public class Item {
     public int getPrice(){
         return price;
     }
+
+    public LocalDate getDate(){return date;}
 
 
 

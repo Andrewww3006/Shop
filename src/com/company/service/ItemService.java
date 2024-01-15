@@ -19,13 +19,13 @@ public class ItemService {
                 if (ch1 == 1) {
                     listByPrice.sort(Comparator.comparing(Item::getPrice));
                     for (Item item : listByPrice)
-                        System.out.println("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + '.');
+                        System.out.println("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + "; Date:" + item.getDate());
                     System.out.println();
                 }
                 if (ch1 == 2) {
                     listByPrice.sort(Comparator.comparing(Item::getPrice).reversed());
                     for (Item item : listByPrice)
-                        System.out.println("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + '.');
+                        System.out.println("id:" + item.getId() + "; Item: " + item.getName() + "; Price:" + item.getPrice() + "; Date:" + item.getDate());
                     System.out.println();
                 }
 
@@ -36,7 +36,7 @@ public class ItemService {
                     }
                     while (!itemQueue.isEmpty())
                         System.out.println("id: " + itemQueue.getFirst().getId() + "; Item: " + itemQueue.getFirst().getName() + "; Price:"
-                                + itemQueue.removeFirst().getPrice() + '.');
+                                + itemQueue.getFirst().getPrice() + "; Date:" + itemQueue.removeFirst().getDate());
                 }
 
                 if (ch1 == 4) {
@@ -46,7 +46,7 @@ public class ItemService {
                     }
                     while (!itemQueue.isEmpty())
                         System.out.println("id: " + itemQueue.getFirst().getId() + "; Item: " + itemQueue.getFirst().getName() + "; Price:"
-                                + itemQueue.removeFirst().getPrice() + '.');
+                                + itemQueue.getFirst().getPrice() + "; Date:" + itemQueue.removeFirst().getDate());
                 }
 
                 break;
@@ -73,6 +73,7 @@ public class ItemService {
             System.out.println("Введите price:");
             Scanner scPrice = new Scanner(System.in);
             item.setPrice(scPrice.nextInt());
+            item.setDate();
             itemMap.put(item.getId(), item);
         }
     }

@@ -14,7 +14,7 @@ public class Starter {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("выберите действие");
-            System.out.println("1. Вывод товара; 2. Добавление товара; 3. Удаление товара по id;");
+            System.out.println("1. Вывод товара; 2. Добавление товара; 3. Удаление товара по id; 4. Редактировние товара.");
             ch = scanner.nextInt();
             switch (ch) {
                 case 1:
