@@ -14,7 +14,7 @@ public class Starter {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("выберите действие");
-            System.out.println("1. Вывод товара; 2. Добавление товара; 3. Удаление товара по id; 4. Редактировние товара.");
+            System.out.println("1. Вывод товара; 2. Добавление товара; 3. Удаление товара по id; 4. Редактировние товара; 5. Сумма товаров; 6. Сумма налогов.");
             ch = scanner.nextInt();
             switch (ch) {
                 case 1:
@@ -32,7 +32,11 @@ public class Starter {
                     itemService.editItem();
                     break;
                 case 5:
-
+                    System.out.println(itemService.getSumm());
+                    break;
+                case 6:
+                    itemService.getTax();
+                    break;
             }
 
         } while (ch != 0);

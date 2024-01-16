@@ -4,7 +4,8 @@ import com.company.Item;
 import com.company.Shop;
 
 import java.util.*;
-import java.util.function.Predicate;
+import java.util.function.BinaryOperator;
+import java.util.function.UnaryOperator;
 
 public class ItemService {
 
@@ -114,6 +115,22 @@ public class ItemService {
         } else {
             System.out.println("Illegal id");
         }
+    }
+
+    public int getSumm(){
+        int summ = 0;
+        BinaryOperator<Integer> addition = (x, y) -> x+y;
+        for (Map.Entry<Integer, Item> item : shop.getItemsMap().entrySet()) {
+            summ = addition.apply(summ, item.getValue().getPrice());
+        }
+        return summ;
+    }
+
+    public void getTax(){
+        double tax = 0;
+        UnaryOperator<Double> taxCalc = x -> x*0.2;
+        tax = taxCalc.apply((double) getSumm());
+        System.out.println("Налог 20% = " + tax);
     }
 
 
