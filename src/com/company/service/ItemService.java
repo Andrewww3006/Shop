@@ -4,8 +4,7 @@ import com.company.Item;
 import com.company.Shop;
 
 import java.util.*;
-import java.util.function.BinaryOperator;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 public class ItemService {
 
@@ -65,19 +64,17 @@ public class ItemService {
         Map<Integer, Item> itemMap = shop.getItemsMap();
         Item item = new Item();
         System.out.println("Введите id:");
-        Scanner scId = new Scanner(System.in);
-        int id = scId.nextInt();
+        //Scanner scId = new Scanner(System.in);
+        int id = Integer.parseInt(scannerSupplier.get());
 
         if (itemMap.containsKey(id)) {
             System.out.println("Товар с таким id уже существует");
         } else {
             item.setId(id);
             System.out.println("Введите name:");
-            Scanner scName = new Scanner(System.in);
-            item.setName(scName.nextLine());
+            item.setName(scannerSupplier.get());
             System.out.println("Введите price:");
-            Scanner scPrice = new Scanner(System.in);
-            item.setPrice(scPrice.nextInt());
+            item.setPrice(Integer.parseInt(scannerSupplier.get()));
             item.setDate();
             itemMap.put(item.getId(), item);
         }
@@ -86,8 +83,8 @@ public class ItemService {
     public void removeItemById() {
         Map<Integer, Item> itemMap = shop.getItemsMap();
         System.out.println("Введите id товара, который нужно удалить");
-        Scanner scannerRemoving = new Scanner(System.in);
-        int id = scannerRemoving.nextInt();
+        //Scanner scannerRemoving = new Scanner(System.in);
+        int id = Integer.parseInt(scannerSupplier.get());
         if (itemMap.containsKey(id)) {
             itemMap.remove(id);
         } else System.out.println("Illegal id");
@@ -97,20 +94,20 @@ public class ItemService {
     public void editItem() {
         Map<Integer, Item> itemMap = shop.getItemsMap();
         System.out.println("Введите id:");
-        Scanner scId = new Scanner(System.in);
-        int id = scId.nextInt();
+        //Scanner scId = new Scanner(System.in);
+        int id = Integer.parseInt(scannerSupplier.get());
         if (itemMap.containsKey(id)) {
             itemMap.remove(id);
             Item item = new Item();
             System.out.println("Введите новый id:");
-            Scanner scNewId = new Scanner(System.in);
-            item.setId(scNewId.nextInt());
+            //Scanner scNewId = new Scanner(System.in);
+            item.setId(Integer.parseInt(scannerSupplier.get()));
             System.out.println("Введите name:");
-            Scanner scName = new Scanner(System.in);
-            item.setName(scName.nextLine());
+            //Scanner scName = new Scanner(System.in);
+            item.setName(scannerSupplier.get());
             System.out.println("Введите price:");
-            Scanner scPrice = new Scanner(System.in);
-            item.setPrice(scPrice.nextInt());
+            //Scanner scPrice = new Scanner(System.in);
+            item.setPrice(Integer.parseInt(scannerSupplier.get()));
             itemMap.putIfAbsent(item.getId(), item);
         } else {
             System.out.println("Illegal id");
@@ -127,14 +124,19 @@ public class ItemService {
     }
 
     public void getTax(){
-        double tax = 0;
+        double tax;
         UnaryOperator<Double> taxCalc = x -> x*0.2;
         tax = taxCalc.apply((double) getSumm());
         System.out.println("Налог 20% = " + tax);
+        Function<Double, String> convert = x -> String.valueOf(x);
+        System.out.println(convert.apply(tax));
+        Consumer<Double> printer = x -> System.out.println(x);
+        printer.accept(tax);
     }
 
+    Supplier<String> scannerSupplier = ()->{
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    };
 
-    Scanner scanner (Scanner scanner){
-        return scanner;
-    }
 }

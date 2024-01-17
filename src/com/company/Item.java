@@ -1,8 +1,6 @@
 package com.company;
 
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.Scanner;
 import java.util.function.Predicate;
 
 public class Item {
@@ -11,13 +9,7 @@ public class Item {
     private int price;
     public LocalDate date;
 
-    public Item(){};
-
-    Item (int id, String name, int price){
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
+    public Item(){}
 
     public void setId(int id) {
         this.id = id;
